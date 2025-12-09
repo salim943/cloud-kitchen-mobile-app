@@ -18,7 +18,7 @@ export default function Login() {
       Alert.alert('Success', 'Logged in successfully!');
 
       // Navigate to UserDashboard after login
-      router.push('/AdminDashboard'); // ← Path to your dashboard
+      router.push('/UserDashboard'); // ← Path to your dashboard
     } catch (err: any) {
       Alert.alert('Error', err.message);
     }

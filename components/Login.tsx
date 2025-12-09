@@ -1,24 +1,19 @@
 import React, { useState } from 'react';
 import { TextInput, TouchableOpacity, Alert, StyleSheet } from 'react-native';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { useRouter } from 'expo-router';
+import { ThemedText } from '../components/themed-text';
+import { ThemedView } from '../components/themed-view';
 
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/components/firebase';
+import { auth } from '../components/firebase'; // adjust path
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter(); // ← Add this
 
   const login = async () => {
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       Alert.alert('Success', 'Logged in successfully!');
-
-      // Navigate to UserDashboard after login
-      router.push('/AdminDashboard'); // ← Path to your dashboard
     } catch (err: any) {
       Alert.alert('Error', err.message);
     }
@@ -58,7 +53,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     padding: 18,
     borderRadius: 10,
-    backgroundColor: '#ffffff20',
+    backgroundColor: '#ffffff20', // Semi-transparent card look
     gap: 12,
   },
   input: {
